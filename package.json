@@ -2,16 +2,16 @@
   "name": "jittered-hexagonal-grid-sampling",
   "version": "1.0.1",
   "description": "Jittered hexagonal grid sampling",
-  "main": "src/jittered-hexagonal-grid-sampling.js",
+  "types": "./build/jittered-hexagonal-grid-sampling.d.ts",
+  "main": "./build/jittered-hexagonal-grid-sampling.js",
   "scripts": {
-    "build": "browserify src/jittered-hexagonal-grid-sampling.js --s JitteredHexagonalGridSampling > build/jittered-hexagonal-grid-sampling.js",
-    "build-min": "browserify src/jittered-hexagonal-grid-sampling.js --s JitteredHexagonalGridSampling | terser --ecma 5 > build/jittered-hexagonal-grid-sampling.min.js",
-    "test": "mocha test/",
-    "eyeball": "node eyeball.js 2 > test.png && open test.png",
-    "benchmark": "node benchmark.js"
+    "prebuild": "rimraf ./build",
+    "build": "tsc && tsc -P tsconfig.declaration.json",
+    "prepare": "npm run build",
+    "test": "jest --silent=false --verbose false"
   },
   "files": [
-    "src/jittered-hexagonal-grid-sampling.js"
+    "build"
   ],
   "repository": {
     "type": "git",
